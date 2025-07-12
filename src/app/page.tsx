@@ -1,5 +1,3 @@
-import styles from "./page.module.css";
-
 export default function Home() {
-  return <div className={styles.page}>hello world</div>;
+  return <div>hello world</div>;
 }
