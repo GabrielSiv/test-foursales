@@ -6,7 +6,6 @@ import {
   PutEffect,
 } from "redux-saga/effects";
 import axios, { AxiosError, AxiosResponse } from "axios";
-
 import { FETCH_USERS_REQUEST, User } from "./types";
 import { fetchUsersSuccess, fetchUsersFailure } from "./actions";
 
