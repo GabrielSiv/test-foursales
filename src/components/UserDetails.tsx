@@ -16,6 +16,7 @@ import {
 } from "../lib/styles/UserDetails";
 
 import { fetchUserByIdRequest } from "@/store/users/actions";
+import { LoadingMessage } from "@/lib/styles/LoadingMessage";
 
 const useAppDispatch: () => AppDispatch = useDispatch;
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -39,9 +40,10 @@ export default function UserDetails({ userId }: UserDetailsProps) {
 
   if (loading) {
     return (
-      <Container>
-        <span className="loader" />
-      </Container>
+      <LoadingMessage>
+        Carregando detalhes do usuário...
+        <div className="loader" />
+      </LoadingMessage>
     );
   }
 
