@@ -14,7 +14,6 @@ const openSans = Open_Sans({
 const GlobalStyle = createGlobalStyle`
   html, body {
     font-family: ${openSans.style.fontFamily};
-  
   }
 `;
 
@@ -24,9 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider theme={{}}>
-      <GlobalStyle />
-      <ReduxProvider>{children}</ReduxProvider>
-    </ThemeProvider>
+    <html>
+      <body>
+        <ThemeProvider theme={{}}>
+          <GlobalStyle />
+          <ReduxProvider>{children}</ReduxProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
