@@ -54,14 +54,8 @@ const UserAccordionItem = ({
           {user.company.name}, "{user.company.catchPhrase}"
         </p>
         <p>
-          <strong>Website: </strong>
-          <br />
-          <a
-            href={`http://${user.website}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {user.website}
+          <a href={`/users/${user.id}`} rel="noopener noreferrer">
+            <strong>Mais detalhes</strong>
           </a>
         </p>
       </AccordionContent>
