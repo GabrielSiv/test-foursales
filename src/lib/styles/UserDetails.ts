@@ -11,6 +11,26 @@ export const Container = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: "Open Sans", sans-serif;
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #333;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 export const Title = styled.h1`
@@ -58,14 +78,6 @@ export const DetailValue = styled.span`
 
 export const ErrorMessage = styled.p`
   color: #dc3545;
-  font-weight: 500;
-  font-size: 1.6rem;
-  text-align: center;
-  margin-top: 20px;
-`;
-
-export const LoadingMessage = styled.p`
-  color: #333;
   font-weight: 500;
   font-size: 1.6rem;
   text-align: center;

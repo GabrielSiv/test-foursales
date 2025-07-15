@@ -7,7 +7,6 @@ import { AppDispatch, RootState } from "@/store";
 
 import {
   Container,
-  LoadingMessage,
   ErrorMessage,
   Title,
   DetailLabel,
@@ -41,7 +40,7 @@ export default function UserDetails({ userId }: UserDetailsProps) {
   if (loading) {
     return (
       <Container>
-        <LoadingMessage>Carregando informações do usuário...</LoadingMessage>
+        <span className="loader" />
       </Container>
     );
   }
