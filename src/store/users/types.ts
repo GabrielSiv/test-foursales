@@ -1,5 +1,9 @@
 import { Action } from "redux";
 
+export const FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST";
+export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
+export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
+
 export interface User {
   id: number;
   name: string;
@@ -23,10 +27,6 @@ export interface User {
     bs: string;
   };
 }
-
-export const FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST";
-export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
-export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
 
 export interface FetchUsersRequestAction extends Action {
   type: typeof FETCH_USERS_REQUEST;
