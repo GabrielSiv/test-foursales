@@ -20,3 +20,22 @@ export const CategoriesWrapper = styled.div`
     font-weight: 600;
   }
 `;
+
+export const ErrorMessage = styled.p`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: #dc3545;
+  font-weight: 500;
+  font-size: 1.2rem;
+`;

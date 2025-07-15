@@ -1,6 +1,11 @@
 "use client";
 
-import { CategoriesWrapper, StyledList } from "@/lib/styles/ListComponent";
+import {
+  CategoriesWrapper,
+  StyledList,
+  ErrorMessage,
+} from "@/lib/styles/ListComponent";
+import { LoadingMessage } from "@/lib/styles/LoadingMessage";
 import { AppDispatch, RootState } from "@/store";
 import { fetchUsersRequest } from "@/store/users/actions";
 import React, { useCallback, useEffect, useMemo } from "react";
@@ -15,7 +20,10 @@ import { User } from "@/store/users/types";
 
 const ListComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { users, loading } = useSelector((state: RootState) => state.users);
+
+  const { users, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
   const favoriteUsers = useSelector(
     (state: RootState) => state.favorites.users
   );
@@ -39,7 +47,25 @@ const ListComponent = () => {
   useEffect(() => {
     dispatch(fetchUsersRequest());
     dispatch(loadFavoritesRequest());
-  }, []);
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <LoadingMessage>
+        Carregando lista de usuários...
+        <div className="loader" />
+      </LoadingMessage>
+    );
+  }
+
+  if (error) {
+    return <ErrorMessage>Erro ao carregar usuários: {error}</ErrorMessage>;
+  }
+
+  if (!users || users.length === 0) {
+    return <ErrorMessage>Nenhum usuário encontrado.</ErrorMessage>;
+  }
+
   return (
     <div>
       <CategoriesWrapper>
@@ -54,7 +80,7 @@ const ListComponent = () => {
         </p>
       </CategoriesWrapper>
       <StyledList>
-        {users.map((user) => {
+        {users.map((user: User) => {
           const isFavorite = favoriteUserIds.has(user.id);
           return (
             <UserAccordionItem
