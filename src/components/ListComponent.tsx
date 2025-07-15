@@ -54,7 +54,7 @@ const ListComponent = () => {
         </p>
       </CategoriesWrapper>
       <StyledList>
-        {users.map((user) => {
+        {users.map((user: User) => {
           const isFavorite = favoriteUserIds.has(user.id);
           return (
             <UserAccordionItem
