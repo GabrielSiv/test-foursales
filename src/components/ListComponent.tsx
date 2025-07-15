@@ -1,4 +1,6 @@
-import { StyledList } from "@/lib/styles/ListComponent";
+"use client";
+
+import { CategoriesWrapper, StyledList } from "@/lib/styles/ListComponent";
 import { AppDispatch, RootState } from "@/store";
 import { fetchUsersRequest } from "@/store/users/actions";
 import React, { useCallback, useEffect, useMemo } from "react";
@@ -39,19 +41,32 @@ const ListComponent = () => {
     dispatch(loadFavoritesRequest());
   }, []);
   return (
-    <StyledList>
-      {users.map((user) => {
-        const isFavorite = favoriteUserIds.has(user.id);
-        return (
-          <UserAccordionItem
-            key={user.id}
-            isFavorite={isFavorite}
-            onToggleFavorite={handleToggleFavorite}
-            user={user}
-          />
-        );
-      })}
-    </StyledList>
+    <div>
+      <CategoriesWrapper>
+        <p>
+          <strong>Nome:</strong>
+        </p>
+        <p>
+          <strong>Email:</strong>
+        </p>
+        <p>
+          <strong>Telefone:</strong>
+        </p>
+      </CategoriesWrapper>
+      <StyledList>
+        {users.map((user) => {
+          const isFavorite = favoriteUserIds.has(user.id);
+          return (
+            <UserAccordionItem
+              key={user.id}
+              isFavorite={isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+              user={user}
+            />
+          );
+        })}
+      </StyledList>
+    </div>
   );
 };
 
