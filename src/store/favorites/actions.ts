@@ -6,21 +6,25 @@ import {
   LOAD_FAVORITES_REQUEST,
 } from "./types";
 
-export const addFavorite = (user: User) => ({
-  type: ADD_FAVORITE,
-  payload: user,
-});
+export const addFavorite = (user: User) =>
+  ({
+    type: ADD_FAVORITE,
+    payload: user,
+  } as const);
 
-export const removeFavorite = (userId: number) => ({
-  type: REMOVE_FAVORITE,
-  payload: userId,
-});
+export const removeFavorite = (userId: number) =>
+  ({
+    type: REMOVE_FAVORITE,
+    payload: userId,
+  } as const);
 
-export const setFavorites = (users: User[]) => ({
-  type: SET_FAVORITES,
-  payload: users,
-});
+export const setFavorites = (users: User[]) =>
+  ({
+    type: SET_FAVORITES,
+    payload: users,
+  } as const);
 
-export const loadFavoritesRequest = () => ({
-  type: LOAD_FAVORITES_REQUEST,
-});
+export const loadFavoritesRequest = () =>
+  ({
+    type: LOAD_FAVORITES_REQUEST,
+  } as const);
