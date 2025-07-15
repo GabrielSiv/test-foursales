@@ -4,6 +4,7 @@ import { Open_Sans } from "next/font/google";
 import ReduxProvider from "../components/ReduxProvider";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./globals.css";
+import StyledComponentsRegistry from "@/lib/registry";
 
 const openSans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <ThemeProvider theme={{}}>
-          <GlobalStyle />
-          <ReduxProvider>{children}</ReduxProvider>
-        </ThemeProvider>
+        <StyledComponentsRegistry>
+          <ThemeProvider theme={{}}>
+            <GlobalStyle />
+            <ReduxProvider>{children}</ReduxProvider>
+          </ThemeProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
