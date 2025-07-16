@@ -3,10 +3,7 @@ import type { Metadata } from "next";
 import Providers from "../lib/providers/Providers";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Lista de usuários",
-    template: "%s",
-  },
+  title: "Lista de usuários",
   description: "Gerencie e visualize informações de usuários e seus favoritos.",
 };
 
