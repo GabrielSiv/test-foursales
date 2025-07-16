@@ -1,23 +1,13 @@
-"use client";
+import type { Metadata } from "next";
 
-import { Open_Sans } from "next/font/google";
-import ReduxProvider from "../components/ReduxProvider";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Providers from "../lib/providers/Providers";
+
+export const metadata: Metadata = {
+  title: "Lista de usuários",
+  description: "Gerencie e visualize informações de usuários e seus favoritos.",
+};
+
 import "./globals.css";
-import StyledComponentsRegistry from "@/lib/registry";
-import Header from "@/components/Header";
-
-const openSans = Open_Sans({
-  weight: ["300", "400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const GlobalStyle = createGlobalStyle`
-  html, body {
-    font-family: ${openSans.style.fontFamily};
-  }
-`;
 
 export default function RootLayout({
   children,
@@ -25,17 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="pt-BR">
       <body>
-        <StyledComponentsRegistry>
-          <ThemeProvider theme={{}}>
-            <GlobalStyle />
-            <ReduxProvider>
-              <Header />
-              {children}
-            </ReduxProvider>
-          </ThemeProvider>
-        </StyledComponentsRegistry>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
