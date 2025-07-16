@@ -5,6 +5,7 @@ import ReduxProvider from "../components/ReduxProvider";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
+import Header from "@/components/Header";
 
 const openSans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -29,7 +30,10 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ThemeProvider theme={{}}>
             <GlobalStyle />
-            <ReduxProvider>{children}</ReduxProvider>
+            <ReduxProvider>
+              <Header />
+              {children}
+            </ReduxProvider>
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
