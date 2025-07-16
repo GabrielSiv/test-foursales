@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 16px 48px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
@@ -16,7 +16,6 @@ export const HomeButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
