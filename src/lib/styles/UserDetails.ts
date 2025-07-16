@@ -9,7 +9,6 @@ export const Container = styled.div`
   margin: 40px auto;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: "Open Sans", sans-serif;
 `;
 
@@ -27,7 +26,6 @@ export const UserDetailsCard = styled.div`
   padding: 30px;
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 `;
 
 export const DetailRow = styled.div`

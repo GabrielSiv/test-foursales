@@ -20,14 +20,15 @@ import { User } from "@/store/users/types";
 
 const ListComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   const { users, loading, error } = useSelector(
     (state: RootState) => state.users
   );
   const favoriteUsers = useSelector(
     (state: RootState) => state.favorites.users
   );
-
+  const { filterType, searchTerm } = useSelector(
+    (state: RootState) => state.filter
+  );
   const favoriteUserIds = useMemo(() => {
     return new Set(favoriteUsers.map((user) => user.id));
   }, [favoriteUsers]);
@@ -43,6 +44,24 @@ const ListComponent = () => {
     },
     [dispatch, favoriteUserIds]
   );
+
+  const filteredUsers = useMemo(() => {
+    let currentUsers = users;
+
+    if (searchTerm) {
+      currentUsers = currentUsers.filter((user) =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (filterType === "favorites") {
+      currentUsers = currentUsers.filter((user) =>
+        favoriteUserIds.has(user.id)
+      );
+    }
+
+    return currentUsers;
+  }, [users, searchTerm, filterType, favoriteUserIds]);
 
   useEffect(() => {
     dispatch(fetchUsersRequest());
@@ -80,7 +99,7 @@ const ListComponent = () => {
         </p>
       </CategoriesWrapper>
       <StyledList>
-        {users.map((user: User) => {
+        {filteredUsers.map((user: User) => {
           const isFavorite = favoriteUserIds.has(user.id);
           return (
             <UserAccordionItem
